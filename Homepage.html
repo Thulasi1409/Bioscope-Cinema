@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="Homepage.css" />
+    <title>Home</title>
+</head>
+<body>
+    <h1>BIOSCOPE CINEMA</h1>
+    <h2>Now Showing</h2>
+
+    <div id="showList">
+        <!-- Show list will be dynamically populated here -->
+    </div>
+
+	<div class="open-btn" onclick="openNav()">&#9776;</div>
+	<div id="mySidebar" class="sidebar">
+    		<a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times; Close</a>
+    		<a href="Homepage.html">Now Showing</a>
+    		<a href="upcoming_show.html">Upcoming Movie</a>
+    		<a href="book_ticket.html">Book Ticket Now</a>
+    		<a href="aboutus.html">About Us</a>
+	</div>
+    <script>
+        // 4 movies
+        var upcomingShows = [
+            { title: "Aquaman 2", image: "Aquaman2.jpg" },
+            { title: "Pendekar Awang", image: "Pendekar_Awang.jpg" },
+            { title: "KL Anarki", image: "Kl_Anarki.jpg" },
+            { title: "Polis Evo 3", image: "Polis_Evo3.jpg"}
+        ];
+
+        // Function to display upcoming shows
+        function displayUpcomingShows() {
+            var showListContainer = document.getElementById("showList");
+
+            // Clear previous content
+            showListContainer.innerHTML = "";
+
+            // Loop through upcoming shows and create HTML elements
+            for (var i = 0; i < upcomingShows.length; i++) {
+                var show = upcomingShows[i];
+                var showContainer = document.createElement("div");
+                showContainer.classList.add("show-container");
+
+                // Create image element
+                var imageElement = document.createElement("img");
+                imageElement.src = show.image;
+                imageElement.alt = show.title + " Image";
+                imageElement.classList.add("show-image");
+
+                // Create show details
+                var showDetails = document.createElement("div");
+                showDetails.innerHTML = "<h3>" + show.title + "</h3>" +
+                    "</p>";
+
+                // Append image and details to the show container
+                showContainer.appendChild(imageElement);
+                showContainer.appendChild(showDetails);
+
+                // Append the show container to the showList div
+                showListContainer.appendChild(showContainer);
+            }
+        }
+
+	function openNav() 
+	{
+        	document.getElementById("mySidebar").style.width = "250px";
+        	document.getElementById("main").style.marginLeft = "250px";
+    	}
+
+    	function closeNav() 
+	{
+        	document.getElementById("mySidebar").style.width = "0";
+        	document.getElementById("main").style.marginLeft= "0";
+    	}
+
+        // Call the function to display upcoming shows
+        displayUpcomingShows();
+    </script>
+</body>
+ <footer>
+        <div class="footer">
+            <p>BIOSCOPE ©2023</p>
+        </div>
+    </footer>
+</html>

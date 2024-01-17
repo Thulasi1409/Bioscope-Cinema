@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking</title>
+    <style>
+        body {
+            text-align: center;
+            background-image: url(Black_gold.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            font-family: serif;
+            margin: 0; /* Remove default margin to ensure full-width background */
+        }
+
+        h1, h2 {
+            margin: 0;
+            color: white; /* Set text color to white for better contrast */
+        }
+
+        h3, h4, h5, h6, h7 {
+            margin: 0;
+            text-align: left;
+            color: white;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .main-container {
+            display: flex;
+            /* justify-content: flex-end; */ /* Commented out to allow parallel alignment */
+        }
+
+        .content-container {
+            flex: 1; /* Make the content container take the available space */
+            padding: 20px;
+        }
+
+        .selection-container {
+            display: flex;
+            flex-direction: column; /* Display items in a column */
+            max-width: 600px; /* Adjust the width as needed */
+            margin: 20px;
+        }
+
+        .date-row,
+        .experience-row,
+        .time-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px; /* Add margin between rows */
+        }
+
+        .selection-box {
+            cursor: pointer;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            width: calc(100% / 7 - 10px); /* Adjust the width based on the number of items per row */
+            margin-right: 10px; /* Add margin between columns */
+        }
+
+        .selected {
+            background-color: #4caf50; /* Green color for selected items */
+            color: white;
+        }
+
+        .proceed-button {
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #000000;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: #333;
+            overflow-x: hidden;
+            padding-top: 20px;
+            transition: 0.5s;
+        }
+
+        .sidebar a {
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #555;
+        }
+
+        .open-btn {
+            font-size: 30px;
+            cursor: pointer;
+            position: fixed;
+            top: 10px;
+            right: 20px;
+        }
+
+        .slider-container {
+            position: relative;
+            margin-top: 50px; /* Adjust the margin-top as needed */
+            width: 400px; /* Set your desired width */
+            height: 600px; /* Set your desired height */
+            overflow: hidden;
+            margin-left: 250px; /* Adjust the right margin to create space between the slider and content */
+        }
+
+        .slider-images {
+            display: flex;
+            align-items: center; /* Align images vertically in the center */
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-image {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            z-index: 1;
+        }
+
+        .prev-button {
+            left: 0;
+        }
+
+        .next-button {
+            right: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>BIOSCOPE CINEMA</h1>
+    <h2>Book Your Ticket Now !</h2>
+    <div class="main-container">
+        <div class="slider-container">
+            <div class="slider-images">
+                <img class="slider-image" src="Aquaman2.jpg" alt="Aquaman 2">
+                <img class="slider-image" src="Pendekar_Awang.jpg" alt="Pendekar Awang">
+                <img class="slider-image" src="Kl_Anarki.jpg" alt="KL Anarki">
+		<img class="slider-image" src="Polis_Evo3.jpg" alt="Polis Evo 3">
+                <!-- Add more images as needed -->
+            </div>
+
+            <button class="slider-button prev-button" onclick="changeSlide(-1)">Prev</button>
+            <button class="slider-button next-button" onclick="changeSlide(1)">Next</button>
+        </div>
+
+        <div class="content-container">
+            <div class="selection-container" id="dateAndExperienceContainer">
+                <h3>KL ANARKI</h3>
+                <h4>2 hrs 15 m | Bahasa Malaysia</h4>
+
+                <h5>Select Date</h5>
+                <div class="date-row">
+                    <div class="selection-box" onclick="selectContainer(this)">Jan 16, 2024</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Jan 17, 2024</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Jan 18, 2024</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Jan 19, 2024</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Jan 20, 2024</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Jan 21, 2024</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Jan 22, 2024</div>
+                </div>
+
+                <h6>Select Experience</h6>
+                <div class="experience-row">
+                    <div class="selection-box" onclick="selectContainer(this)">2D</div>
+                    <div class="selection-box" onclick="selectContainer(this)">4DX</div>
+                    <div class="selection-box" onclick="selectContainer(this)">IMAX</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Private Screen</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Premium</div>
+                </div>
+
+                <h7>Select Time</h7>
+                <div class="time-row">
+                    <div class="selection-box" onclick="selectContainer(this)">12:00 PM</div>
+                    <div class="selection-box" onclick="selectContainer(this)">3:00 PM</div>
+                    <div class="selection-box" onclick="selectContainer(this)">6:00 PM</div>
+                    <div class="selection-box" onclick="selectContainer(this)">9:00 PM</div>
+                    <div class="selection-box" onclick="selectContainer(this)">12:00 AM</div>
+                    <div class="selection-box" onclick="selectContainer(this)">3:00 AM</div>
+                    <div class="selection-box" onclick="selectContainer(this)">6:00 AM</div>
+                </div>
+
+                <button class="proceed-button" onclick="proceedToBooking()">Proceed to Booking</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <p>BIOSCOPE ©2023</p>
+        </div>
+    </footer>
+
+    <div class="open-btn" onclick="openNav()">&#9776;</div>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times; Close</a>
+        <a href="Homepage.html">Now Showing</a>
+        <a href="upcoming_show.html">Upcoming Movie</a>
+        <a href="#TicketBooking">Book Ticket Now</a>
+        <a href="#about">About Us</a>
+    </div>
+
+    <script>
+        let selectedContainers = [];
+
+        function selectContainer(container) {
+            container.classList.toggle('selected');
+            updateSelectedContainers();
+        }
+
+        function updateSelectedContainers() {
+            selectedContainers = [];
+            const allSelectionBoxes = document.querySelectorAll('.selection-box');
+            allSelectionBoxes.forEach(box => {
+                if (box.classList.contains('selected')) {
+                    selectedContainers.push(box.textContent.trim());
+                }
+            });
+        }
+
+        function proceedToBooking() {
+            if (selectedContainers.length > 0) {
+                alert('Selected Containers:\n' + selectedContainers.join('\n'));
+                // You can replace the alert with your desired action for proceeding to booking
+            } else {
+                alert('Please select at least one container before proceeding to booking.');
+            }
+        }
+
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+
+        let currentIndex = 0;
+        const totalSlides = document.querySelectorAll('.slider-image').length;
+        const sliderImages = document.querySelector('.slider-images');
+
+        function changeSlide(direction) 
+	{
+            currentIndex += direction;
+
+            if (currentIndex < 0) 
+		{
+                	currentIndex = totalSlides - 1;
+            	} 
+		else if (currentIndex >= totalSlides) 
+		{
+                	currentIndex = 0;
+            	}
+
+            const translateXValue = `-${currentIndex * 100}%`;
+	    sliderImages.style.transition = `transform 0.5s ease-in-out';
+            sliderImages.style.transform = `translateX(${translateXValue})`;
+
+        }
+
+	document.querySelector('.prev-button').addEventListener('click', () => {
+        changeSlide(-1);
+   	 });
+
+    	document.querySelector('.next-button').addEventListener('click', () => {
+        changeSlide(1);
+    	});
+    </script>
+
+</body>
+</html>
+
+

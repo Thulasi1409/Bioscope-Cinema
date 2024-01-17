@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="book_ticket.css" />
+    <title>Ticket Booking</title>
+
+</head>
+<body>
+    <h1>BIOSCOPE CINEMA</h1>
+	<br>
+    <h2>Book Your Ticket Now !</h2>
+    <div class="main-container">
+        <div class="slider-container">
+    <div class="slider-images">
+        <img class="slider-image" src="Aquaman2.jpg" alt="Aquaman 2">
+        <img class="slider-image" src="Pendekar_Awang.jpg" alt="Pendekar Awang">
+        <img class="slider-image" src="Kl_Anarki.jpg" alt="KL Anarki">
+        <img class="slider-image" src="Polis_Evo3.jpg" alt="Polis Evo 3">
+        <!-- Add more images as needed -->
+    </div>
+
+    <!--<button class="slider-button prev-button" onclick="changeSlide(-1)">Prev</button>
+    <button class="slider-button next-button" onclick="changeSlide(1)">Next</button>-->
+	
+	<button class="slider-button prev-button" onclick="prev()">Prev</button>
+    <button class="slider-button next-button" onclick="next()">Next</button>
+	
+</div>
+
+
+        <div class="content-container">
+            <div class="selection-container" id="dateAndExperienceContainer">
+                <h3>MOVIE LIST</h3>
+                <h4>2 hrs 15 m | Bahasa Malaysia</h4>
+
+                <h5>Select Date</h5>
+                <div class="date-row">
+                    <div class="selection-box" onclick="selectContainer(this)">Jan 16, 2024</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Jan 17, 2024</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Jan 18, 2024</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Jan 19, 2024</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Jan 20, 2024</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Jan 21, 2024</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Jan 22, 2024</div>
+                </div>
+
+                <h6>Select Experience</h6>
+                <div class="experience-row">
+                    <div class="selection-box" onclick="selectContainer(this)">2D</div>
+                    <div class="selection-box" onclick="selectContainer(this)">4DX</div>
+                    <div class="selection-box" onclick="selectContainer(this)">IMAX</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Private Screen</div>
+                    <div class="selection-box" onclick="selectContainer(this)">Premium</div>
+                </div>
+
+                <h7>Select Time</h7>
+                <div class="time-row">
+                    <div class="selection-box" onclick="selectContainer(this)">12:00 PM</div>
+                    <div class="selection-box" onclick="selectContainer(this)">3:00 PM</div>
+                    <div class="selection-box" onclick="selectContainer(this)">6:00 PM</div>
+                    <div class="selection-box" onclick="selectContainer(this)">9:00 PM</div>
+                    <div class="selection-box" onclick="selectContainer(this)">12:00 AM</div>
+                    <div class="selection-box" onclick="selectContainer(this)">3:00 AM</div>
+                    <div class="selection-box" onclick="selectContainer(this)">6:00 AM</div>
+                </div>
+
+                <button class="proceed-button" onclick="proceedToBooking()">Proceed to Booking</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="open-btn" onclick="openNav()">&#9776;</div>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times; Close</a>
+        <a href="Homepage.html">Now Showing</a>
+        <a href="upcoming_show.html">Upcoming Movie</a>
+        <a href="book_ticket.html">Book Ticket Now</a>
+        <a href="aboutus.html">About Us</a>
+    </div>
+
+    <script>
+        let selectedContainers = [];
+
+        function selectContainer(container) {
+            container.classList.toggle('selected');
+            updateSelectedContainers();
+        }
+
+        function updateSelectedContainers() {
+            selectedContainers = [];
+            const allSelectionBoxes = document.querySelectorAll('.selection-box');
+            allSelectionBoxes.forEach(box => {
+                if (box.classList.contains('selected')) {
+                    selectedContainers.push(box.textContent.trim());
+                }
+            });
+        }
+
+        function proceedToBooking() {
+    if (selectedContainers.length > 0) {
+        localStorage.setItem('selectedContainers', JSON.stringify(selectedContainers));
+        window.location.href = 'SelectSeat.html';
+    } else {
+        alert('Please select at least one choice before proceeding to booking.');
+    }
+}
+
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+	
+	var slider_img = document.querySelector('.slider-image');
+var images = ['Aquaman2.jpg', 'Pendekar_Awang.jpg', 'Kl_Anarki.jpg', 'Polis_Evo3.jpg'];
+var i = 0;
+
+function prev(){
+	if(i <= 0) i = images.length;	
+	i--;
+	return setImg();			 
+}
+
+function next(){
+	if(i >= images.length-1) i = -1;
+	i++;
+	return setImg();			 
+}
+
+function setImg(){
+	return slider_img.setAttribute('src', images[i]);
+	
+}
+	
+    </script>
+</body>
+<footer>
+    <div class="footer">
+        <p>BIOSCOPE ©2023</p>
+    </div>
+</footer>
+</html>

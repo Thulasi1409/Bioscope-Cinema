@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>About Us</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="aboutus.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+    html {
+     height: auto;
+    }
+
+    *{
+     box-sizing: border-box;
+    }
+
+    body {
+            background-image: url(background3.jpg);
+			background-color: black;
+			text-align: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white; /* Set text color to white for better contrast */
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin-top: 30px;
+            font-family: "Lato", sans-serif;
+            margin: 0; /* Remove default margin to ensure full-width background */
+    }
+	
+	 h1 {
+            margin-top: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        h2 {
+            margin-top: 30px;
+            text-align: center;
+            color: white;
+        }
+
+	
+	h4 {
+     font-size: 19px;
+     line-height: 1.375em;
+     color: white;
+     font-weight: 400;
+     margin-bottom: 30px;
+    }
+  
+	.content-wrapper{
+	 display: flex;
+	 flex-direction: column;
+	 flex: 1;
+	}
+
+    .about-us {
+      text-align: center;
+    }
+	
+	.about-us h2{
+	 font-size: 20px;
+	}
+	
+	.about-us p{
+	 font-size: 14px;
+	}
+
+    .about-us img {
+      max-width: 20%;
+      height: auto;
+      margin-top: 20px;
+    }
+
+    .description {
+      text-align: center;
+      margin: 20px auto;
+      max-width: 600px;
+	  font-size: 14px;
+    }
+	
+	.carousel{
+	 width: 70%;
+	 margin: 20px auto;
+	}
+	
+	.carousel-inner{
+	 max-height: 100px;
+	}
+	
+    .carousel-control.right, .carousel-control.left {
+     background-image: none;
+     color: #b36b00;
+    }
+	
+    .carousel-indicators li {
+     border-color: #b36b00;
+    }
+	
+    .carousel-indicators li.active {
+     background-color: #b36b00;
+    }
+	
+	.item h4 {
+     font-size: 14px;
+     line-height: 1.375em;
+     font-weight: 400;
+     font-style: italic;
+     margin: 20px 0;
+	 color: white;
+    }
+	
+    .item span {
+     font-style: normal;
+    }
+
+    .line {
+      border-top: 1px solid #000;
+	  width: auto;
+      height: 2px;
+    }
+	
+	.section{
+	 margin: 5px;
+	 width: auto;
+	 text-align: center;
+	 flex: 1;
+	 background-color: ##F6F5E1;
+     padding: 8px;
+     border-radius: 10px;
+     box-shadow: 0 0 10px;
+	}
+	
+	.section h4{
+	 font-size: 14px;
+	 margin-bottom: 5px;
+	 background-color: ##F6F5E1;
+	}
+	
+	.sidebar 
+	{
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: #333;
+            overflow-x: hidden;
+            padding-top: 20px;
+            transition: 0.5s;
+        }
+
+        .sidebar a {
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            margin-left: 0;
+            padding: 20px;
+            transition: margin-left 0.5s;
+        }
+
+        .open-btn {
+            font-size: 30px;
+            cursor: pointer;
+            position: fixed;
+            top:10px;
+	    right: 20px;
+        }
+
+          
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #b36b00;
+  color: white;
+  text-align: center;
+}
+  </style>
+</head>
+
+<body>
+ <div class = "content-wrapper">
+  <div class="about-us">
+    <h1>About Us</h1>
+    <img src="bioscope.jpg" alt="About Us Image">
+    <div class="description">
+      <p>The Future Generation had found a way to enjoy the free time while releasing some tension. Of course, 
+	     the ktsc team come to the rescue to help make an easier way for this future to enjoy it.</p>
+    </div>
+
+    <h3>Seat Experience Offers</h3>
+     <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+     <!-- Indicators -->
+     <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+     </ol>
+
+	 <!-- Wrapper for slides -->
+     <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <h4>"This cafe is the best. I am so happy with the Roti Canai!"<br><span>Anis Norsyamimi, Vice President, Sisters Box</span><br></h4>
+      </div>
+      <div class="item">
+        <h4>"One word... WOW!!"<br><span>Saliha, Manager, KTBSC Inc</span><br></h4>
+      </div>
+      <div class="item">
+        <h4>"Could I... BE any more happy with this cinema?"<br><span>Naqiyah Mahzan, Actor, FriendsAlot</span><br></h4>
+      </div>
+     </div>
+</div>
+    <div class="line"></div>
+	<div class="section">
+     <h4>
+	  <a href = "https://www.cinema.com.my/faq.aspx">FAQs</a>
+	  </h4>
+    </div>
+	
+    <div class="line"></div>
+	<div class="section">
+     <h4>
+	  <a href = "https://www.gsc.com.my/terms-and-conditions/">Terms & Conditions</a>
+	 </h4>
+    </div>
+	
+    <div class="line"></div>
+	<div class="section">
+     <h4>
+	  <a href = "https://www.cinema.com.my/privacy_policy.aspx">Privacy & Policy</a>
+	 </h4>
+	</div>
+	 
+	<div class="line"></div>
+	<div class="section">
+     <h4>Contact Us</h4>
+	</div>
+  <br>
+ </div>  
+   <div class="open-btn" onclick="openNav()">&#9776;</div>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times; Close</a>
+        <a href="Homepage.html">Now Showing</a>
+        <a href="upcoming_show.html">Upcoming Movie</a>
+        <a href="book_ticket.html">Book Ticket Now</a>
+        <a href="aboutus.html">About Us</a>
+    </div>
+<script>
+function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+</script>
+</body>
+ <footer>
+        <div class="footer">
+            <p>BIOSCOPE ©2023</p>
+        </div>
+    </footer>
+</html>

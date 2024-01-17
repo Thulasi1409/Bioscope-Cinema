@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+html {
+  height: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: url('background3.jpg') center/cover no-repeat;
+  background-color: #000000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Lato", sans-serif;
+  margin: 0;
+}
+
+.movie-container {
+  margin: 20px 0;
+}
+
+.movie-container select {
+  background-color: #fff;
+  border: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 10px;
+  padding: 5px 15px 5px 15px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.container {
+  perspective: 1000px;
+  margin-bottom: 50px;
+}
+
+.seat {
+  background-color: #444451;
+  height: 36px;
+  width: 36px;
+  margin: 5px;
+  font-size: 15px;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.seat.selected {
+  background-color: #00ff00;
+}
+
+.seat.sold {
+  background-color: #b30000;
+  cursor: not-allowed;
+}
+
+.seat:not(.sold):hover {
+  background-color: #00b300;
+}
+
+.seat:nth-of-type(2) {
+  margin-right: 50px;
+}
+
+.seat:nth-last-of-type(2) {
+  margin-left: 50px;
+}
+
+.showcase {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.showcase li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.showcase li small {
+  margin-left: 2px;
+}
+
+.row {
+  display: flex;
+}
+
+.screen {
+  width: 100%;
+  position: relative;
+  border-top: 5px solid #fff;
+  margin-top: 30px;
+  border-radius: 20%;
+  overflow: hidden;
+  text-align: center;
+  padding-top: 15px;
+  letter-spacing: 5px;
+  font-size: 12px;
+  margin-bottom: 50px;
+  transform: rotateX(-48deg);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+  background-color: #fff; /* Fill the screen with white */
+}
+
+
+p.text {
+  margin: 5px 0;
+}
+
+p.text span {
+  color: rgb(158, 248, 158);
+}
+
+button {
+  background-color: #daa520;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-bottom: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #000000;
+  transform: scale(1.1);
+}
+
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #b36b00;
+  color: white;
+  text-align: center;
+}

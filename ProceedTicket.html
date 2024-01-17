@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="ProceedTicket.css" />
+    <title>Proceed Ticket</title>
+</head>
+
+<body>
+    <h3>BOOK YOUR TICKET NOW!</h3>
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <img src="Pendekar_Awang.jpg" class="w3-border" alt="Background Image" height="600px" width="400px">
+            </div>
+
+            <div class="column">
+                <form id="selectedSeatForm" method="post" action="ProceedTicket.html">
+                    <input type="hidden" id="selectedSeatData" name="selectedSeatData" />
+
+                    <h4>Pendekar Awang</h4>
+                    <span>2hrs 15mins</span>
+                    <br>
+                    <h4>Seat</h4>
+                    <span id="displayedSeatData">seat no</span>
+                    <br>
+                    <h4>Experience Type</h4>
+                    <span>2D</span>
+                    <br>
+                    <h4>Hall</h4>
+                    <span>Hall 10</span>
+                    <br>
+                    <h4>Date & Time</h4>
+                    <span>16 Jan 2024</span>
+					<span>3:00PM</span>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <button onclick="confirmBooking()">
+        <div class="button">
+            Confirm Booking
+        </div>
+    </button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const selectedContainers = JSON.parse(localStorage.getItem("selectedContainers"));
+    const selectedSeats = JSON.parse(localStorage.getItem("selectedSeats"));
+
+    if (selectedContainers && selectedContainers.length > 0) {
+        // Display the selected containers in book_ticket.html
+        console.log('Selected Containers:', selectedContainers);
+    }
+
+    if (selectedSeats && selectedSeats.length > 0) {
+        // Display the selected seats in SelectSeat.html
+        const seatData = selectedSeats.join(', ');
+        document.getElementById('displayedSeatData').innerText = seatData;
+    }
+});
+
+       function confirmBooking() {
+    // Store data in localStorage
+    const selectedSeatData = document.getElementById('displayedSeatData').innerText;
+    localStorage.setItem('selectedSeatData', selectedSeatData);
+
+    // Submit the form
+    document.getElementById('selectedSeatForm').submit();
+    window.location.href = 'payment.html';
+}
+    </script>
+</body>
+<footer>
+        <div class="footer">
+            <p>BIOSCOPE ©2023</p>
+        </div>
+    </footer>
+</html>
